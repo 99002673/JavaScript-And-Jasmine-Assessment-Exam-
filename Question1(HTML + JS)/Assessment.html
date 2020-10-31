@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Customer</title>
+    <style>
+        body{
+            font-size: 16px;
+            background-color:lightblue;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        h1{
+          text-align: center;
+          text-decoration: underline;  
+        }
+
+        form{
+            width : 400px;
+            padding : 15px;
+            border : 2px solid black;
+            margin: 50px auto 0;
+            border-radius: 5px; 
+            background-color: lightgrey; 
+        }
+
+        label{
+            display:block;
+            margin-bottom: 5px;
+        }
+
+        input, select{
+            border:1px solid lightgrey;
+            padding:10px;
+            display:block;
+            width:95%;
+            border-radius: 2px;
+        }
+        input.inline{
+            display:inline-block;
+            width: auto;
+            padding-right: 15px;
+        }
+        .reg{
+            padding-bottom: 15px;
+        }
+        .error{
+            font-size:0.8em;
+            color :indianred;
+        }
+        button{
+            display:block;
+            width:95%;
+            height: 50px;
+            border-color:brown;
+            background-color:burlywood;
+            margin-top: 15px;
+            align-content: center;
+        }
+    </style>
+    <script>
+             function CheckError(id, msg)
+             {
+                document.getElementById(id).innerText = msg;
+             }
+        function Validation()
+        {
+            var name = document.formReg.name.value;
+            var email = document.formReg.email.value;
+            var telephone = document.formReg.phone.value;
+            var billdate = document.formReg.billdate.value;
+            var billamount = document.formReg.billamount.value;
+
+            if(name == "" || name == null)
+            {
+                CheckError("errName", "Name is mandatory");
+                return false;
+            }
+            else{
+                CheckError("errName","");
+            }
+    
+            //email validation    
+            if(email == "" || email==null)
+            {
+                CheckError("errEmail", "Email is mandatory");
+                return false;
+            }
+            else{
+                CheckError("errEmail","");
+            }
+
+            let regEx1 = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z]+.com$");
+            if(regEx1.test(email) == false)
+            {
+                CheckError("errEmail", "Email is not in a valid format");
+                return false;
+            }
+            else{
+                CheckError("errEmail","");
+            }
+
+           if(telephone == "" || telephone==null)
+            {
+                CheckError("errMob", "Mobile Number is mandatory");
+                return false;
+            }
+            else{
+                CheckError("errMob","");
+            }
+
+            let regEx2 = new RegExp("^[1-9]{10}$");
+            if((regEx2.test(telephone))==false)
+            {
+                CheckError("errMob", "Mobile Number is not correct");
+                return false;
+            }
+            else{
+                CheckError("errMob","");
+            }
+
+        
+            if(billdate == "")
+            {
+                CheckError("errbilldate", "Bill Date is not Selected");
+                return false;
+            }
+            else{
+                CheckError("errbilldate","");
+            }
+
+            
+            if(billamount  == "")
+            {   
+                CheckError("errbillamount ", "Bill Amount is not Selected");
+                return false;  
+            }
+            else{
+                CheckError("errbillamount","");
+            }
+
+         let check  =  alert("Customer Registration is Successfull");
+       
+         
+         document.getElementById("resultemail").innerText =document.getElementById("name").value;
+         document.getElementById("resulttelephone").innerText =document.getElementById("name").value;
+         document.getElementById("resultbilldate").innerText =document.getElementById("name").value;
+         document.getElementById("resultbillamount").innerText =document.getElementById("name").value;
+     
+        return true;
+        }
+
+
+
+        </script>
+</head>
+   
+
+<body>
+    <form action="" name="formReg" onsubmit="return Validation()">
+        <h1>Customer Registration Form</h1>
+        <div class="reg">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="name" />
+            <div id="errName" class="error"></div>
+        </div>
+        <div class="reg">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" />
+            <div id="errEmail" class="error"></div>
+        </div>
+        <div class="reg">
+            <label for="phone">Telephone</label>
+            <input type="text" id="phone" name="phone" />
+            <div id="errMob" class="error"></div>
+        </div>
+        <div class="reg">
+            <label for="billdate">Billing Date</label>
+            <input type="date" id="billdate" name="billdate" />
+            <div id="errbilldate" class="error"></div>
+        </div>
+        <div class="reg">
+            <label for="billamount">Bill Amount</label>
+            <input type="number" id="billamount" name="billamount" />
+            <div id="errbillamount" class="error"></div>
+        </div>
+        <button >Register</button>
+    </form>
+
+
+
+    <h3> <span id="resultname">   </span> </h3>
+    <h3 id="resultemail">     </h3>
+    <h3 id="resulttelephone">   </h3>
+    <h3 id="resultbilldate">    </h3>
+    <h3 id="resultbillamount">   </h3>
+
+   
+</body>
+</html>
