@@ -1,1 +1,1 @@
-# JavaScript-And-Jasmine-Assessment-Exam-
+# JavaScript-And-Jasmine-Assessment-Exam
